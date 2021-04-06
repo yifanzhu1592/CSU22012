@@ -1,7 +1,7 @@
 # CSU22012
 
 
-CSU22012: Data Structures and Algorithms Group Project
+          CSU22012: Data Structures and Algorithms Group Project
 Due date: Friday April 30th 23:59.
 Late submissions will be subject to penalty of -33% per day.
 Summary/highlights:
