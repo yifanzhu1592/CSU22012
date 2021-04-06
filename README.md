@@ -1,9 +1,9 @@
 # CSU22012
 
 
-          CSU22012: Data Structures and Algorithms Group Project
-Due date: Friday April 30th 23:59.
-Late submissions will be subject to penalty of -33% per day.
+                                                                 **CSU22012: Data Structures and Algorithms Group Project
+                                                                            Due date: Friday April 30th 23:59.**
+                                                            **Late submissions will be subject to penalty of -33% per day.**
 Summary/highlights:
 • Implementation of a bus management system based on Vancouver bus system data
 • Topics covered: graphs, searching and sorting, tries
@@ -12,7 +12,9 @@ Summary/highlights:
 • Submission to blackboard only – no webcat/junit tests needed
 • 50% of your overall CSU22012 mark
 • Deliverables: code, pre-recorded 5-minute demo, design document
-Groups – deadline April 16th:
+
+**
+Groups – deadline April 16th:**
 This a group assignment with 4 members per group. Please pick your own groups and email me the
 names and ids of the people in your group by April 16th, together with a link to the repository where
 you will be storing your project code, with the subject line CSU22012 Group Members (please make
@@ -27,9 +29,10 @@ and if you are using college-hosted gitlab.scss.tcd.ie, my college username is d
 If you do not have a group, I have provided a google doc which all of you should be able to edit, to
 help you search for partners or fill in empty spots in already formed groups. Please note smaller or
 larger groups are not allowed.
-https://docs.google.com/document/d/1QHWl0DMUnr_oKH7HutKvNURbJ0Gvi5i9POrGdUC2jY0/edit
-?usp=sharing
-Assignment Code Specification – 4 parts:
+https://docs.google.com/document/d/1QHWl0DMUnr_oKH7HutKvNURbJ0Gvi5i9POrGdUC2jY0/edit?usp=sharing
+
+                                                                      **Assignment Code Specification – 4 parts:****
+                                                                      
 This assignment is less prescribed than the previous individual ones. You are given high-level specs,
 and any design decisions are up to you, as long as the end product meets the specifications and is
 efficient based on both space and time complexity. You are allowed to import any additional java
