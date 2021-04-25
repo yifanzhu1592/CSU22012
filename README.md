@@ -119,3 +119,4 @@ for accounting for all edge cases) – 60 points total
 • 10 points for the interface enabling selection of functionality
 • 10 points for the demo
 • 20 points for the analysis in the design document
+
