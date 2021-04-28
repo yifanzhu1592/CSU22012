@@ -191,13 +191,16 @@ public class TST {
 		this.keysWithPrefix(input).forEach((info) -> {
 			list.add(map.get(this.get(info)));
 		});
+		if (list.isEmpty()) {
+			list.add("Bus stop doesn't exist!");
+		}
 		return list;
 	}
 
 	public static void main(String[] args) {
 
 		TST tst = new TST("stops.txt");
-		tst.getStopInformation("HASTINGS ST FS").forEach((info) -> {
+		tst.getStopInformation("SHAUGHNESSY").forEach((info) -> {
 			System.out.println(info);
 		});
 	}
