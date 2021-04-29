@@ -168,6 +168,9 @@ public class userInterface extends javax.swing.JFrame {
 		java.awt.EventQueue.invokeLater(() -> {
 			new userInterface().setVisible(true);
 		});
+		
+		TST tst = new TST("stops.txt");
+		tst.getStopInformation("SHAUGHNESSY");
 	}
 	private javax.swing.JButton btnRefresh;
 	private javax.swing.JButton btnSubmit;
