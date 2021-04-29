@@ -9,21 +9,13 @@ import java.util.Scanner;
 
 public class ArrivalTime {
 
-	public static void main(String[] args) throws FileNotFoundException, IOException {
+	public static void printArrival(File file) throws FileNotFoundException, IOException {
 
-		java.io.File file = new java.io.File("stop_times.txt");		
-		printArrival(file);
-
-
-	}
-
-	public static void printArrival(File file) throws IOException {
 		ArrayList<String> stopTimes = readTextFileByLines(file);
 		ArrayList<String> results = new ArrayList();
-		
+
 		Scanner input = new Scanner(System.in);
 		System.out.println("Enter an arrival time in the format HH:MM:SS: ");
-
 		try {
 			String time = input.next();
 			if (time.matches("(([0-1]?[0-9])|(2[0-3])):[0-5][0-9]:[0-5][0-9]")) {
