@@ -4,8 +4,7 @@ public class FrontEnd {
 
 	public static void main(String[] args) {
 		java.io.File file = new java.io.File("stop_times.txt");
-		ArrivalTime time = new ArrivalTime();
-
+		
 		boolean quit = false;
 		do {
 			TST tst = new TST("stops.txt");
@@ -20,7 +19,10 @@ public class FrontEnd {
 				input.nextLine();
 				if (choice >= 0 && choice <= 3) {
 					try {
-
+						if(choice == 0) {
+							System.out.println("Have a nice day!");
+							System.exit(0);
+						}
 						if (choice == 1) {
 
 						} else if (choice == 2) {
@@ -31,10 +33,11 @@ public class FrontEnd {
 								System.out.println(info);
 							});
 						} else if (choice == 3) {
-							time.printArrival(file);
+							
+							ArrivalTime.printArrival(file);
 						}
 					} catch (Exception e) {
-						// TODO Auto-generated catch block
+						System.out.println("");
 						e.printStackTrace();
 					}
 				}
