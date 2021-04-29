@@ -192,7 +192,7 @@ public class TST {
 			list.add(map.get(this.get(info)));
 		});
 		if (list.isEmpty()) {
-			list.add("Bus stop doesn't exist!");
+			list.add("Bus stop doesn't exist!\n");
 		}
 		return list;
 	}
