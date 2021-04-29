@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Scanner;
 
@@ -12,11 +11,16 @@ public class ArrivalTime {
 
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 
-		java.io.File file = new java.io.File("stop_times.txt");
+		java.io.File file = new java.io.File("stop_times.txt");		
+		printArrival(file);
 
-		ArrayList<String> lines = readTextFileByLines(file);
+
+	}
+
+	public static void printArrival(File file) throws IOException {
+		ArrayList<String> stopTimes = readTextFileByLines(file);
 		ArrayList<String> results = new ArrayList();
-
+		
 		Scanner input = new Scanner(System.in);
 		System.out.println("Enter an arrival time in the format HH:MM:SS: ");
 
@@ -24,9 +28,9 @@ public class ArrivalTime {
 			String time = input.next();
 			if (time.matches("(([0-1]?[0-9])|(2[0-3])):[0-5][0-9]:[0-5][0-9]")) {
 				time = " " + time;
-				for (int i = 0; i < lines.size(); i++) {
-					if (lines.get(i).contains(time)) {
-						results.add(lines.get(i));
+				for (int i = 0; i < stopTimes.size(); i++) {
+					if (stopTimes.get(i).contains(time)) {
+						results.add(stopTimes.get(i));
 					}
 				}
 			}
@@ -38,7 +42,6 @@ public class ArrivalTime {
 		} else {
 			System.out.println("Either you input an invalid time or the arrival time could not be found.");
 		}
-
 	}
 
 //reads in text file and filters out invalid times.
@@ -52,7 +55,8 @@ public class ArrivalTime {
 	public static void printArrivalTimes(ArrayList<String> list) throws IOException {
 
 		Collections.sort(list, (a, b) -> parseId(a) - parseId(b));
-		System.out.println("Trip ID, Arrival Time, Departure Time, Stop ID, Stop sequence, Stop Headsign, Pickup Type, Drop Off Type, Shape, Distance Traveled  ");
+		System.out.println(
+				"Trip ID, Arrival Time, Departure Time, Stop ID, Stop sequence, Stop Headsign, Pickup Type, Drop Off Type, Shape, Distance Traveled  ");
 		for (var l : list)
 			System.out.println(l);
 	}
