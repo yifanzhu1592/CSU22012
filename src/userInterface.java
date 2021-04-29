@@ -178,13 +178,30 @@ public class userInterface extends javax.swing.JFrame {
 		
 		 Dijkstra algorithm = new Dijkstra("stops.txt","transfers.txt");
 		
-		 ArrayList<Vertex> vertexes = algorithm.vertexes;
-		 ArrayList<String> startStops = algorithm.startStops;
-		 ArrayList<String> endStops = algorithm.endStops;
-		   
-		 ArrayList<Double> weight = algorithm.weight;
-		 Double cost = algorithm.cost;
+			ArrayList<Vertex> vertexes = algorithm.vertexes;   /* vertex objects for the Algorithm */
+			ArrayList<String> startStops = algorithm.startStops; /* Start point of the edge */
+			ArrayList<String> endStops = algorithm.endStops; /* End point of the edge */
 		
+			ArrayList<Double> weight = algorithm.weight; /* weight of the edge defined in startStops and End Stops */
+		
+			Double cost = algorithm.cost; /* for storing the cost of the path taken, initially 0 */ 
+		 
+		   /////********* To be realised that the vertexes have been initalised but the vertexes still have no  ******\\\\\\\\\\
+ ////////********  edges, hence I have provided the above variables to create the edges and then initalise the vertexes  *******\\\\\\\
+		 
+		 String inputSource = ""; //User input holder for source stop
+		 String inputDestination = ""; // User Input holder for destination stop
+		 
+		 Vertex source = new Vertex(inputSource); //creates a vertex object of the source stop
+		 Vertex destination = new Vertex(inputDestination);//creates a vertex object of the destination stop
+		 
+		 algorithm.computePath(source); //compute shortest path from source to all vertexes
+		 // Printing the result- Display in the Display area of the UI
+		  cost = algorithm.cost; 
+		 
+		 System.out.println(algorithm.getShortestPathTo(destination) + "\n" + cost);
+		//getShortesPathTo(Destination), returns the path of the shortest path between the source and the destination
+		 // algorithm.cost returns the cost of the path by the shortest path algorithm.
 		
 	}
 	private javax.swing.JButton btnRefresh;
