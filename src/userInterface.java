@@ -195,6 +195,13 @@ public class userInterface extends javax.swing.JFrame {
 		 Vertex source = new Vertex(inputSource); //creates a vertex object of the source stop
 		 Vertex destination = new Vertex(inputDestination);//creates a vertex object of the destination stop
 		 
+		 if((vertexes.contains(source) && vertexes.contains(destination)) == false) {
+			 
+			 System.out.print("Sorry, the bus stop does not exist. Please try again with a different one");
+			 
+			 //Then the user should be asked for entering the Bus Stop again, which comes under the UI
+		 }
+		 
 		 algorithm.computePath(source); //compute shortest path from source to all vertexes
 		 // Printing the result- Display in the Display area of the UI
 		  cost = algorithm.cost; 
