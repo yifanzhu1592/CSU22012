@@ -1,3 +1,6 @@
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
@@ -146,7 +149,7 @@ public class userInterface extends javax.swing.JFrame {
 	}
 
 
-	public static void main(String args[]) {
+	public static void main(String args[]) throws FileNotFoundException {
 		try {
 			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
 				if ("Nimbus".equals(info.getName())) {
@@ -171,6 +174,18 @@ public class userInterface extends javax.swing.JFrame {
 		
 		TST tst = new TST("stops.txt");
 		tst.getStopInformation("SHAUGHNESSY");
+		
+		
+		 Dijkstra algorithm = new Dijkstra("stops.txt","transfers.txt");
+		
+		 ArrayList<Vertex> vertexes = algorithm.vertexes;
+		 ArrayList<String> startStops = algorithm.startStops;
+		 ArrayList<String> endStops = algorithm.endStops;
+		   
+		 ArrayList<Double> weight = algorithm.weight;
+		 Double cost = algorithm.cost;
+		
+		
 	}
 	private javax.swing.JButton btnRefresh;
 	private javax.swing.JButton btnSubmit;
