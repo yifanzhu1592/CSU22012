@@ -197,12 +197,4 @@ public class TST {
 		return list;
 	}
 
-	public static void main(String[] args) {
-
-		TST tst = new TST("stops.txt");
-		tst.getStopInformation("SHAUGHNESSY").forEach((info) -> {
-			System.out.println(info);
-		});
-	}
-
 }
