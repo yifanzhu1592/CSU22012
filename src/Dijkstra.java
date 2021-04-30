@@ -19,18 +19,23 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Scanner;
 
 public class Dijkstra {
 	
-	public ArrayList<Vertex> vertexes = new ArrayList<Vertex>();
+	
 	   public ArrayList<String> startStops = new ArrayList<String>();
 	   public ArrayList<String> endStops = new ArrayList<String>();
 	   public ArrayList<Edge> edges = new ArrayList<Edge>();
 	   public ArrayList<Double> weight = new ArrayList<Double>();
 	   public Double cost;
+	   public HashMap<String,Vertex> VertexesMap = new HashMap<String,Vertex>();
+	   
+	   
 	
 		
 	   public Dijkstra(String stopsFileName, String transfersFileName) throws FileNotFoundException 
@@ -45,11 +50,11 @@ public class Dijkstra {
 		   String stop = sc1.nextLine();
 		   String stopar[] = stop.split(",");
 		   Vertex v = new Vertex(stopar[0]);
-		   vertexesAL.add(v);
+		   VertexesMap.put(stopar[0], v);
 	   }
 	   
 	   sc1.close();
-	   vertexes = vertexesAL;
+	  
 
 	   File transfersFile = new File(transfersFileName);
 	   Scanner sc2 = new Scanner(transfersFile);
@@ -84,21 +89,20 @@ public class Dijkstra {
 	   weight = weightAL;
 	   
 	   
-	    ArrayList<Edge> edgesAL = new ArrayList<Edge>();
 	    
-	    for(int i = 0;i < startStopsAL.size();i++) {
-	    	Vertex V1 = new Vertex(startStopsAL.get(i));
-	    	Vertex V2 = new Vertex(endStopsAL.get(i));
-	    	Double edgeWeight = weightAL.get(i);
+	    
+	    for(int i = 1;i < startStopsAL.size();i++) {
+	    	Vertex V1 = VertexesMap.get(startStops.get(i));
+	    	Vertex V2 = VertexesMap.get(endStops.get(i));
+	    	Double edgeWeight = weight.get(i);
 	    	
-	    	Edge e = new Edge(edgeWeight,V1,V2);
 	    	
-	    	V1.addNeighbour(e);
-	    	edgesAL.add(e);
+	    	V1.addNeighbour(new Edge(edgeWeight,V1,V2));
+	    	VertexesMap.put(startStops.get(i), V1);
 	    	
 	    }
 	    
-	    edges = edgesAL;
+	  
 	    
 	    
 	    
@@ -146,7 +150,7 @@ public class Dijkstra {
     }
 
  
-   
+
 		 
     	
 		

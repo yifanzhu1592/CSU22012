@@ -1,11 +1,14 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
+import java.util.Map;
 
 public class FrontEnd {
 
 	public static void main(String[] args) {
 		java.io.File file = new java.io.File("stop_times.txt");
-		
+		ArrivalTime time = new ArrivalTime();
+
 		boolean quit = false;
 		do {
 			TST tst = new TST("stops.txt");
@@ -20,10 +23,7 @@ public class FrontEnd {
 				input.nextLine();
 				if (choice >= 0 && choice <= 3) {
 					try {
-						if(choice == 0) {
-							System.out.println("Have a nice day!");
-							System.exit(0);
-						}
+
 						if (choice == 1) {
 							
 							
@@ -31,7 +31,7 @@ public class FrontEnd {
 							String inputDestination = "";
 							 Dijkstra algorithm = new Dijkstra("stops.txt","transfers.txt");
 								
-								ArrayList<Vertex> vertexes = algorithm.vertexes;   /* vertex objects for the Algorithm */
+								HashMap<String,Vertex> vertexes = algorithm.VertexesMap;   /* vertex objects for the Algorithm */
 								ArrayList<String> startStops = algorithm.startStops; /* Start point of the edge */
 								ArrayList<String> endStops = algorithm.endStops; /* End point of the edge */
 							    ArrayList<Edge> edges = algorithm.edges;
@@ -61,10 +61,10 @@ public class FrontEnd {
 							 
 
 							 
-							 Vertex source = new Vertex(inputSource); //creates a vertex object of the source stop
-							 Vertex destination = new Vertex(inputDestination);//creates a vertex object of the destination stop
+							 Vertex source = vertexes.get(inputSource); //creates a vertex object of the source stop
+							 Vertex destination = vertexes.get(inputDestination);//creates a vertex object of the destination stop
 							 
-							 if((vertexes.contains(source) && vertexes.contains(destination)) == false) {
+							 if(vertexes.get(inputSource) == null && vertexes.get(inputDestination) == null) {
 								 
 								 System.out.println("Sorry, the bus stops entered do not exist. Please try again with a different stop ID");
 								 
@@ -78,8 +78,8 @@ public class FrontEnd {
 							 
 							}
 							  
-							 Vertex source = new Vertex(inputSource); //creates a vertex object of the source stop
-							 Vertex destination = new Vertex(inputDestination);//creates a vertex object of the destination stop
+							 Vertex source = vertexes.get(inputSource); //creates a vertex object of the source stop
+							 Vertex destination = vertexes.get(inputDestination);//creates a vertex object of the destination stop
 							 
 							 algorithm.computePath(source); //compute shortest path from source to all vertexes
 							 // Printing the result- Display in the Display area of the UI
@@ -101,11 +101,10 @@ public class FrontEnd {
 								System.out.println(info);
 							});
 						} else if (choice == 3) {
-							
-							ArrivalTime.printArrival(file);
+							time.printArrival(file);
 						}
 					} catch (Exception e) {
-						System.out.println("");
+						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				}
