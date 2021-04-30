@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+//Author Michael Sweeney
 public class FrontEnd {
 
 	public static void main(String[] args) {
