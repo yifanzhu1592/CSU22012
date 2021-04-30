@@ -34,16 +34,15 @@ public class Dijkstra {
 	   public ArrayList<Double> weight = new ArrayList<Double>();
 	   public Double cost;
 	   public HashMap<String,Vertex> VertexesMap = new HashMap<String,Vertex>();
-	   
-	   
+	   public ArrayList<String[]> tripIdStops = new ArrayList<String[]>();	   
 	
 		
-	   public Dijkstra(String stopsFileName, String transfersFileName) throws FileNotFoundException 
+	   public Dijkstra(String stopsFileName, String transfersFileName, String stop_timesFileName) throws FileNotFoundException 
 	   { 
 		   File stopsfile = new File(stopsFileName);
 		   Scanner sc1 = new Scanner(stopsfile);
 
-	   ArrayList<Vertex> vertexesAL = new ArrayList<Vertex>();
+	  
 
 	   while(sc1.hasNextLine())
 	   {
@@ -83,6 +82,8 @@ public class Dijkstra {
 	   
 	   }
 	   
+	   sc2.close();
+	   
 	   startStops = startStopsAL;
 	   endStops = endStopsAL;
 	   
@@ -102,9 +103,54 @@ public class Dijkstra {
 	    	
 	    }
 	    
+	  File stops_times_file = new File(stop_timesFileName);
+	  Scanner sc3 = new Scanner(stops_times_file);
 	  
-	    
-	    
+	  while(sc3.hasNextLine()) {
+		  
+		 String a = sc3.nextLine();
+		 String stop_times_ar[] = a.split(",");
+		 
+		 String tripID = stop_times_ar[0];
+		 
+		String stopID = stop_times_ar[3];
+		String TripStopAr[] = {tripID,stopID};
+		
+		tripIdStops.add(TripStopAr);
+		  
+		
+
+	  }
+	  
+		  
+		  String TripID = tripIdStops.get(1)[0];
+		  String StopID = tripIdStops.get(1)[1];
+		  Vertex v1 = VertexesMap.get(StopID);
+		  for(int j = 2; j < tripIdStops.size(); j++) {
+			  
+			  String TripID2 = tripIdStops.get(j)[0];
+			  String StopID2 = tripIdStops.get(j)[1];
+			  
+			  
+			  if(TripID.equals(TripID2)) {
+				  Vertex v2 = VertexesMap.get(StopID2);
+				  v1.addNeighbour(new Edge(1.0,v1,v2));
+				  
+				  VertexesMap.put(v1.name, v1);
+				  v1 = v2;
+				  
+			  }
+			  
+			  else {
+				  TripID =TripID2;
+				  Vertex v2 = VertexesMap.get(StopID2);
+				  v1 = v2;
+			  }
+			  
+		  }
+		  
+	  
+	   
 	    
 	    
 	   }
@@ -151,7 +197,6 @@ public class Dijkstra {
 
  
 
-		 
     	
 		
 
