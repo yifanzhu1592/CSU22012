@@ -28,7 +28,7 @@ public class Dijkstra {
 	public ArrayList<Vertex> vertexes = new ArrayList<Vertex>();
 	   public ArrayList<String> startStops = new ArrayList<String>();
 	   public ArrayList<String> endStops = new ArrayList<String>();
-	   
+	   public ArrayList<Edge> edges = new ArrayList<Edge>();
 	   public ArrayList<Double> weight = new ArrayList<Double>();
 	   public Double cost;
 	
@@ -82,7 +82,27 @@ public class Dijkstra {
 	   endStops = endStopsAL;
 	   
 	   weight = weightAL;
-
+	   
+	   
+	    ArrayList<Edge> edgesAL = new ArrayList<Edge>();
+	    
+	    for(int i = 0;i < startStopsAL.size();i++) {
+	    	Vertex V1 = new Vertex(startStopsAL.get(i));
+	    	Vertex V2 = new Vertex(endStopsAL.get(i));
+	    	Double edgeWeight = weightAL.get(i);
+	    	
+	    	Edge e = new Edge(edgeWeight,V1,V2);
+	    	
+	    	V1.addNeighbour(e);
+	    	edgesAL.add(e);
+	    	
+	    }
+	    
+	    edges = edgesAL;
+	    
+	    
+	    
+	    
 	   }
 		 
 	
@@ -126,8 +146,7 @@ public class Dijkstra {
     }
 
  
-
-  
+   
 		 
     	
 		
