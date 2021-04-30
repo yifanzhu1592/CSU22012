@@ -1,6 +1,6 @@
-import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Scanner;
 
 //Author Michael Sweeney
 public class FrontEnd {
@@ -30,23 +30,15 @@ public class FrontEnd {
 							
 							String inputSource = "";
 							String inputDestination = "";
-							 Dijkstra algorithm = new Dijkstra("stops.txt","transfers.txt","stop_times.txt");
+							Dijkstra algorithm = new Dijkstra("stops.txt","transfers.txt","stop_times.txt");
 								
-								HashMap<String,Vertex> vertexes = algorithm.VertexesMap;   /* vertex objects for the Algorithm */
-								ArrayList<String> startStops = algorithm.startStops; /* Start point of the edge */
-								ArrayList<String> endStops = algorithm.endStops; /* End point of the edge */
-							    ArrayList<Edge> edges = algorithm.edges;
-								ArrayList<Double> weight = algorithm.weight; /* weight of the edge defined in startStops and End Stops */
-							
-								Double cost = algorithm.cost; /* for storing the cost of the path taken, initially 0 */ 
-							 
-							   /////********* To be realised that the vertexes have been initalised but the vertexes still have no  ******\\\\\\\\\\
-					 ////////********  edges, hence I have provided the above variables to create the edges and then initalise the vertexes  *******\\\\\\\
-							 
-								
+							HashMap<String,Vertex> vertexes = algorithm.VertexesMap;   /* vertex objects for the Algorithm */
 								
 							
-								boolean lock = true;
+							Double cost = algorithm.cost; /* for storing the cost of the path taken, initially 0 */ 
+							 
+								
+							boolean lock = true;
 							
 							while(lock!=false){
 							
@@ -67,7 +59,7 @@ public class FrontEnd {
 							 
 							 if(vertexes.get(inputSource) == null && vertexes.get(inputDestination) == null) {
 								 
-								 System.out.println("Sorry, the bus stops entered do not exist. Please try again with a different stop ID");
+								 System.out.println("Sorry, the bus stops entered do not exist or you have entered an invalid stopID. Please try again with a different stop ID");
 								 
 								 continue;
 								 
@@ -86,10 +78,10 @@ public class FrontEnd {
 							 // Printing the result- Display in the Display area of the UI
 							  cost = algorithm.cost; 
 							 
-							 System.out.println(algorithm.getShortestPathTo(destination) + "\n" + cost);
+							 System.out.println("The Path from "+ source.name +" to "+ destination.name+ " is " + algorithm.getShortestPathTo(destination));
 							//getShortesPathTo(Destination), returns the path of the shortest path between the source and the destination
 							 // algorithm.cost returns the cost of the path by the shortest path algorithm.
-							
+							System.out.println("Cost of the Path: " + cost);
 							
 
 						} else if (choice == 2) {
